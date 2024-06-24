@@ -3,46 +3,36 @@
   import Battery from "./lib/Battery.svelte";
   import BatteryFill from "./lib/BatteryFill.svelte";
   import Man from "./lib/Man.svelte";
+  import Section1 from "./lib/sections/Section1.svelte";
+  import Section2 from "./lib/sections/Section2.svelte";
+  import Section3 from "./lib/sections/Section3.svelte";
+  import Section4 from "./lib/sections/Section4.svelte";
+  import Section5 from "./lib/sections/Section5.svelte";
+  import Ton from "./lib/Ton.svelte";
+  import Tether from "./lib/Tether.svelte";
+  import Not from "./lib/Not.svelte";
 
   const sections = [
     {
-      title: "",
-      content: "",
+      id: "section1",
+      Content: Section1,
     },
     {
       id: "section2",
-      title: "Section 2",
-      content: "This is the content of section 2",
+      Content: Section2,
     },
     {
       id: "section3",
-      title: "Section 3",
-      content: "This is the content of section 3",
+      title: "",
+      Content: Section3,
     },
     {
       id: "section4",
-      title: "Section 4",
-      content: "This is the content of section 4",
+      Content: Section4,
     },
     {
       id: "section5",
-      title: "Section 5",
-      content: "This is the content of section 5",
-    },
-    {
-      id: "section6",
-      title: "Section 6",
-      content: "This is the content of section 6",
-    },
-    {
-      id: "section7",
-      title: "Section 7",
-      content: "This is the content of section 7",
-    },
-    {
-      id: "section8",
-      title: "",
-      content: "",
+      Content: Section5,
     },
   ];
 
@@ -57,12 +47,28 @@
 
 <main class="relative flex justify-end">
   <div class="fixed inset-0 flex h-full w-1/3 items-center justify-center">
-    <Battery class="absolute h-full w-full object-contain" />
-    <BatteryFill
-      class="absolute z-10 h-full w-full object-contain"
-      {progress}
+    <div id="man" class="relative">
+      <Battery class="absolute top-0 h-full w-full" />
+      <BatteryFill class="absolute top-0 h-full w-full" {progress} />
+      <Man class="wiggle relative top-0  h-full w-full" />
+    </div>
+    <Tether
+      class="absolute left-[10%] blur-[2px]"
+      style="top:{progress / 3}%"
     />
-    <Man class="z-20 h-full w-full object-contain" />
+    <Not
+      class="absolute left-[15%] blur-[1px]"
+      style="top:{progress / 3.5 - 10}%"
+    />
+    <Tether
+      class="absolute left-[30%] scale-125"
+      style="top:{progress / 2 - 50}%"
+    />
+    <Ton class="absolute right-[10%] scale-150" style="top:{progress - 100}%" />
+    <Ton
+      class="absolute left-[20%] scale-[200%]"
+      style="top:{progress * 1.5 - 100}%"
+    />
   </div>
 
   <div
@@ -72,21 +78,35 @@
     class="pointer-events-none fixed bottom-0 z-10 box-border h-1/3 w-2/3 bg-gradient-to-b from-transparent to-emerald-500"
   />
   <div class="relative flex w-2/3 flex-col items-center bg-emerald-500">
-    {#each sections as { title, content, id }, index}
+    <div class="h-[40vh]" />
+    {#each sections as { Content, id }, index}
       <section
-        class="h-[30vh] snap-center scroll-mb-[40vh] scroll-mt-[40vh] rounded-lg p-4 text-center text-white outline-black"
+        class="min-h-[30vh] snap-center scroll-mb-[40vh] scroll-mt-[40vh] rounded-lg p-4 text-center text-white outline-black"
         {id}
       >
-        <a href={"#" + id}>
-          <h2 class="text-4xl font-bold md:text-5xl">
-            {title}
-          </h2>
-          <p>{content}</p>
-        </a>
+        <div class="flex cursor-default flex-col">
+          <svelte:component this={Content} />
+        </div>
       </section>
     {/each}
+    <div class="h-[40vh]" />
   </div>
 </main>
 
 <style>
+  @keyframes wiggle {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  #man {
+    animation: wiggle 2s infinite;
+  }
 </style>
