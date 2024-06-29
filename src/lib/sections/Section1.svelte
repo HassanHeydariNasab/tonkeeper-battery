@@ -1,7 +1,5 @@
 <h2>Hello Tonkeeper user!</h2>
-<p class="mt-8 text-2xl font-semibold">
-  Don't you have Tonkeeper yet? Download it now.
-</p>
+<p class="mt-8">Don't you have Tonkeeper yet? Download it now.</p>
 <a
   href="https://tonkeeper.com"
   target="_blank"

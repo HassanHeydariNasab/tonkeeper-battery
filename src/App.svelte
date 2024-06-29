@@ -8,8 +8,6 @@
   import Section4 from "./lib/sections/Section4.svelte";
   import Section5 from "./lib/sections/Section5.svelte";
   import Section6 from "./lib/sections/Section6.svelte";
-  import Ton from "./lib/Ton.svelte";
-  import Tether from "./lib/Tether.svelte";
 
   const sections = [
     {
@@ -42,7 +40,7 @@
   let y = 0;
   let screenHeight = 0;
 
-  $: progress = Math.floor((y / screenHeight) * 1.4 * 100);
+  $: progress = Math.floor((y / screenHeight) * 2 * 100);
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -96,7 +94,7 @@
     <div class="h-[40vh]" />
     {#each sections as { Content, id }, index}
       <section
-        class="mt-8 flex min-h-[35vh] cursor-default snap-center scroll-mb-[40vh] scroll-mt-[40vh] flex-col items-center rounded-lg p-8 text-center text-white outline-black [&_p]:max-w-[40rem]"
+        class="mt-8 flex min-h-[50vh] cursor-default snap-center flex-col items-center justify-center rounded-lg p-4 text-center text-white outline-black [&_p]:max-w-[40rem]"
         {id}
       >
         <svelte:component this={Content} />

@@ -1,5 +1,5 @@
 <h2>Fly with battery power</h2>
-<ul class="mt-12 text-2xl">
+<ul class="mt-12">
   <li>Token swaps: ~50 charges</li>
   <li>Token transfers: ~10 charges</li>
   <li>NFT transfers: ~4 charges</li>
