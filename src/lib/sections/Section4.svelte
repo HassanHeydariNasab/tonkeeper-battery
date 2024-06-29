@@ -1,4 +1,4 @@
-<h2 class="text-4xl font-bold md:text-5xl">Easily recharge</h2>
+<h2>Easily recharge</h2>
 <p class="mt-8 text-2xl">
   Buy using your credit card, or buy it in Tonkeeper via the App Store on the
   iOS version.

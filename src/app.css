@@ -39,3 +39,11 @@ body {
   margin: 0;
 }
 
+@layer components {
+  a.button {
+    @apply rounded-md border-4 border-[var(--backgroundContent)] p-4 text-xl font-semibold text-[var(--backgroundContent)] shadow-md transition-shadow hover:shadow-xl;
+  }
+  h2 {
+    @apply text-4xl font-bold md:text-5xl;
+  }
+}
